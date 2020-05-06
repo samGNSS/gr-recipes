@@ -58,6 +58,5 @@ vars: # We explicitly enable some subcomponents to make sure the build fails if 
   config_opt: " -DENABLE_DOXYGEN=$builddocs -DENABLE_GR_AUDIO=ON -DENABLE_GR_BLOCKS=ON -DENABLE_GR_DIGITAL=ON -DENABLE_GR_FEC=ON -DENABLE_GR_FFT=ON -DENABLE_GR_FILTER=ON -DENABLE_GR_QTGUI=OFF -DENABLE_GR_UHD=OFF -DENABLE_PYTHON=ON -DENABLE_VOLK=ON -DENABLE_GRC=OFF "
 inherit: cmake
 configure_static: cmake .. -DCMAKE_BUILD_TYPE=$cmakebuildtype -DCMAKE_INSTALL_PREFIX=$prefix -DENABLE_STATIC_LIBS=True $config_opt
-install: |
-    make install
-    make install
+make: make -j1
+install: make install
